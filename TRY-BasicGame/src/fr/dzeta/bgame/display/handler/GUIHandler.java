@@ -13,6 +13,10 @@ public class GUIHandler {
 	private static Frame frame;
 	private static Panel panel;
 	
+	public static void refresh() {
+		GUIHandler.frame.repaint();
+	}
+	
 	public static void init() {
 		GUIHandler.frame = new Frame();
 		GUIHandler.panel = new Panel();

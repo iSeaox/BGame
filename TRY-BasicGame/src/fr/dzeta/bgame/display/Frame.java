@@ -1,11 +1,14 @@
 package fr.dzeta.bgame.display;
 
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import fr.dzeta.bgame.display.handler.GUIHandler;
+import fr.dzeta.bgame.main.Main;
 public class Frame extends JFrame {
 
 	/**
@@ -21,9 +24,18 @@ public class Frame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				Main.flush();
+				super.windowClosing(e);
+			}
+			
+		});
 		
 		ImageIcon icon = new ImageIcon(Frame.ICON_PATH);
 		Image img = icon.getImage();
 		this.setIconImage(img);
-	}
+	}	
 }
