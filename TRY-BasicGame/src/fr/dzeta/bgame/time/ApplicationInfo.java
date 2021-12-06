@@ -14,7 +14,7 @@ public class ApplicationInfo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int count;
+	private long count;
 	private int openning;
 	
 	public ApplicationInfo() {
@@ -24,8 +24,8 @@ public class ApplicationInfo implements Serializable{
 	
 	public ApplicationInfo load() {
 		ApplicationInfo info = null;
-		if(new File("./temp/time/elasped.tim").exists()) {
-			try (FileInputStream fis = new FileInputStream("./temp/time/elasped.tim"); ObjectInputStream ois = new ObjectInputStream(fis)){
+		if(new File("./temp/time/elapsed.tim").exists()) {
+			try (FileInputStream fis = new FileInputStream("./temp/time/elapsed.tim"); ObjectInputStream ois = new ObjectInputStream(fis)){
 				info =  (ApplicationInfo)ois.readObject();
 				
 				ois.close();
@@ -41,8 +41,8 @@ public class ApplicationInfo implements Serializable{
 	}
 	
 	public void flush() {
-		System.out.println("<info> flush");
-		File file = new File("./temp/time/elasped.tim");
+		System.out.println("[end]<info> flush");
+		File file = new File("./temp/time/elapsed.tim");
 		if(!file.exists()) {
 			try {
 				file.getParentFile().mkdirs();
@@ -51,7 +51,8 @@ public class ApplicationInfo implements Serializable{
 				e.printStackTrace();
 			}
 		}
-		try (FileOutputStream fos = new FileOutputStream("./temp/time/elasped.tim"); ObjectOutputStream oos = new ObjectOutputStream(fos)){
+		try (FileOutputStream fos = new FileOutputStream("./temp/time/elapsed.tim"); 
+				ObjectOutputStream oos = new ObjectOutputStream(fos)){
 			oos.writeObject(this);
 			
 			oos.close();
@@ -61,7 +62,7 @@ public class ApplicationInfo implements Serializable{
 		}
 	}
 
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
 

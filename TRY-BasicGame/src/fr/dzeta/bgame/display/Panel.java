@@ -13,6 +13,7 @@ public class Panel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -892709140099326573L;
+	
 	public Panel() {
 		this.setLayout(null);
 	}
@@ -22,7 +23,6 @@ public class Panel extends JPanel {
 		g.setColor(Color.ORANGE);
 		g.fillRect(0, 0, GUIHandler.FRAME_WIDTH, GUIHandler.FRAME_HEIGHT);
 		
-		g.setColor(Color.BLACK);
-		g.fillRect(200, 200, 50, 50);
+		GUIHandler.getPlayer().display(g);
 	}
 }

@@ -9,8 +9,7 @@ public class Main {
 	private static final int GAME_FRAME_INTERVALE = 1000 / GAME_FPS;
 
 	public static boolean RUN = true;
-	
-	private static ApplicationInfo info;
+	public static ApplicationInfo info;
 	
 	static {
 		info = new ApplicationInfo().load();
