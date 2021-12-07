@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import fr.dzeta.bgame.display.Frame;
 import fr.dzeta.bgame.display.Panel;
+import fr.dzeta.bgame.display.objects.Background;
 import fr.dzeta.bgame.display.objects.Player;
 import fr.dzeta.bgame.listener.KeyHandler;
 import fr.dzeta.bgame.main.Main;
@@ -19,6 +20,7 @@ public class GUIHandler {
 	private static JLabel timer;
 	
 	private static Player player;
+	private static Background background;
 	
 	public static void refresh() {
 		GUIHandler.timer.setText("Openning: "+Main.info.getOpenning()+"  timer: "
@@ -33,6 +35,7 @@ public class GUIHandler {
 		frame.addKeyListener(new KeyHandler());
 		
 		player = new Player();
+		background = new Background();
 		
 		timer = new JLabel("Openning: "+Main.info.getOpenning()+"  timer: "
 				+TimeUtils.parseSecond(Main.info.getCount()));
@@ -44,5 +47,9 @@ public class GUIHandler {
 
 	public static Player getPlayer() {
 		return player;
+	}
+	
+	public static Background getBackground() {
+		return background;
 	}
 }

@@ -23,6 +23,7 @@ public class Panel extends JPanel {
 		g.setColor(Color.ORANGE);
 		g.fillRect(0, 0, GUIHandler.FRAME_WIDTH, GUIHandler.FRAME_HEIGHT);
 		
+		GUIHandler.getBackground().display(g);
 		GUIHandler.getPlayer().display(g);
 	}
 }

@@ -16,9 +16,9 @@ public class Player implements Displayable{
 	private int depth = 50;
 	
 	public Player() {
-		this.x = 200;
-		this.y = 200;
-		this.z = 200;
+		this.x = 250;
+		this.y = 250;
+		this.z = 100;
 	}
 	
 	@Override
@@ -27,26 +27,29 @@ public class Player implements Displayable{
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(x, y, this.width, this.height);
 		
-//		int[] xPoints = {x + width
-//				, (int) (x + Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
-//				, (int) (x + Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
-//				, x + width};
-//		int[] yPoints = {y
-//				, (int) (y + Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
-//				, (int) (y + Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF)) + height
-//				, y + height};
-		int[] xPoints = {x + width
+		final int[] xPointsRight = {x + width
 				, (int) (x + width+ Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
 				, (int) (x + width+ Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
 				, x + width};
-		int[] yPoints = {y
-				, (int) (y - height+ Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
-				, (int) (y - height+ Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF)) + height
+		final int[] yPointsRight = {y
+				, (int) (y - Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
+				, (int) (y + height - Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
 				, y + height};
 		
-		g.setColor(Color.BLACK);
-		g.fillPolygon(xPoints, yPoints, 4);
+		g.setColor(new Color(0x2A2A2A));
+		g.fillPolygon(xPointsRight, yPointsRight, xPointsRight.length);
 		
+		final int[] xPointsUp = {x
+				, x + width
+				, (int) (x + width + Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
+				, (int) (x + Math.cos(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))};
+		final int[] yPointsUp = {y
+				, y
+				, (int) (y - Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))
+				, (int) (y - Math.sin(PERSPECTIVE_ANGLE) * (depth * PERSPECTIVE_COEF))};
+		
+		g.setColor(new Color(0x5A5A5A));
+		g.fillPolygon(xPointsUp, yPointsUp, xPointsUp.length);
 	}
 	public int getX() {
 		return x;
